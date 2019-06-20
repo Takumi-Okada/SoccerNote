@@ -1,4 +1,34 @@
-h1
-  | Notes#new
-p
-  | Find me in app/views/notes/new.html.erb
+h1.mb-5
+  | ノート作成画面
+
+- if @note.errors.present?
+    .alert.alert-danger
+        ul
+            - @note.errors.full_messages.each do |message|
+                li= message
+
+.area
+  =form_with model: @note,local: true do |f|
+    .text-center
+    .form-group.row
+      =f.label :title,class: 'col-sm-2'
+      .w-75
+        =f.text_field :title,class:'form-control col-sm-10'
+    .form-group.row.mb-5
+      =f.label :play_date,class: 'col-sm-2'
+      .w-25
+        =f.date_field :play_date,class:'form-control col-sm-10'
+    .form-group
+      =f.label :contents
+      =f.text_area :contents,class:'form-control textarea'
+    .form-group
+      =f.label :good
+      =f.text_area :good,class:'form-control textarea'
+    .form-group
+      =f.label :bad
+      =f.text_area :bad,class:'form-control textarea'
+    .form-group
+      =f.label :goal
+      =f.text_area :goal,class:'form-control textarea'
+    .text-center
+      =f.submit class:'btn btn-primary mt-5'

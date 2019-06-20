@@ -1,4 +1,22 @@
-h1
-  | Notes#index
-p
-  | Find me in app/views/notes/index.html.erb
+h1.mb-5
+  | サッカーノート一覧
+
+.mb-3
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th 選手名
+        th タイトル
+        th 実施日
+        th
+    tbody
+      - @notes.each do |note|
+          tr
+            th
+            th= link_to note.title,note
+            th= note.play_date
+            - if note.comment.present?
+              th.text-success コメント済
+            - else
+              th.text-danger コメント無し
+

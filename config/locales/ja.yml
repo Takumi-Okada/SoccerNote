@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      note: ノート
+    attributes:
+      note:
+        title: タイトル
+        play_date: 実施日
+        contents: 内容
+        good: 良かったところ
+        bad: 悪かったところ
+        goal: 次の目標
+        commenter: コメント者
+        comment: コメント
+        

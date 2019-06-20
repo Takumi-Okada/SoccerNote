@@ -1,4 +1,29 @@
-h1
-  | Notes#show
-p
-  | Find me in app/views/notes/show.html.erb
+.area
+  h2.mb-3.font-weight-bold =@note.title
+
+  .mb-5 #{@note.play_date.year}年#{@note.play_date.month}月#{@note.play_date.day}日
+  
+  .border-bottom.border-info
+    h3 良かったところ
+  .mb-4.mt-2 =simple_format(@note.good)
+
+  .border-bottom.border-info
+    h3 悪かったところ
+  .mb-4.mt-2 =simple_format(@note.bad)
+
+  .border-bottom.border-info
+    h3 次の目標
+  .mb-4.mt-2 =simple_format(@note.goal)
+
+  .clearfix.border-bottom.border-info
+          h3.float-left 指導者からのコメント
+          =link_to "コメントを記載する",edit_note_path,class: 'float-right btn btn-outline-info'
+  - if @note.comment.present?
+    =simple_format(@note.comment)
+  - else
+    .text-muted.text-center.mt-2 コメントが記載されていません
+
+
+  .text-center.mt-5
+    =link_to 'ノート編集',edit_note_path,class: 'btn btn-success'
+    
