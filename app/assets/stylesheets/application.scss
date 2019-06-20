@@ -1,3 +1,22 @@
+@import 'bootstrap';
+
+body{
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    background-color: #EEFFFF;
+}
+
+.area{
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    border: double 10px #5bc0de;
+}
+
+.textarea{
+    resize: none;
+    min-height:150px;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

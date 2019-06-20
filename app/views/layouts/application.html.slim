@@ -7,5 +7,20 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    
   body
-    = yield
+    .navbar.navbar-expand-md.navbar-light.bg-info.sticky-top
+      .navbar-brand= link_to 'SoccerNote',root_path,class: "nav-link text-white"
+
+      ul.navbar-nav 
+        li.nav-item = link_to 'ノート作成',new_note_path,class: 'nav-link text-white'
+              
+
+      
+
+    - if flash.notice.present?
+        .alert.alert-success=flash.notice
+    - elsif flash.alert.present?
+        .alert.alert-danger=flash.alert
+    .container.pt-4
+      = yield
