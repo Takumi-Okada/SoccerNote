@@ -1,4 +1,36 @@
-h1
-  | Members#show
-p
-  | Find me in app/views/members/show.html.erb
+.float-left.mb-5.text-center.mr-3.area.show-left-area
+    -if @member.avatar.attached?
+        =image_tag @member.avatar,class: 'image mb-5'
+    -else
+        =image_tag "noimage.jpg",class: 'image mb-5'
+    
+    .ul
+        .li.mb-3 氏名：#{@member.name}
+        .li.mb-3 ポジション：#{@member.position}
+        .li.mb-3 誕生日：#{@member.birthday}
+        .li.mb-3 メールアドレス：#{@member.email}
+
+    =link_to "基本情報更新",edit_member_path,class: 'btn btn-success mt-5'
+
+.float-left.area.show-right-area
+  h1.font-weight-bold.text-center.mb-5.border-bottom.border-info Myノート
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th タイトル
+        th 実施日
+        th
+    tbody
+      - @notes.each do |note|
+          tr
+            th= link_to note.title,note
+            th= note.play_date
+            - if note.comment.present?
+              th.text-success コメント済
+            - else
+              th.text-danger コメント無し
+
+
+        
+    
+   

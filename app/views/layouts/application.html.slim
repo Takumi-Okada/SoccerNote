@@ -12,9 +12,14 @@ html
     .navbar.navbar-expand-md.navbar-light.bg-info.sticky-top
       .navbar-brand= link_to 'SoccerNote',root_path,class: "nav-link text-white"
 
-      ul.navbar-nav 
-        li.nav-item = link_to 'ノート作成',new_note_path,class: 'nav-link text-white'
-              
+      -if current_user.present?
+        ul.navbar-nav 
+          li.nav-item = link_to 'ノート作成',new_note_path,class: 'nav-link text-white'
+          li.nav-item = link_to 'メンバー一覧',members_path,class: 'nav-link text-white'
+          li.nav-item = link_to 'ログアウト',logout_path,method: :delete,class: 'nav-link text-white'
+        .form-inline.ml-auto
+            =link_to current_user.name,current_user,class: 'text-white'
+                
 
       
 

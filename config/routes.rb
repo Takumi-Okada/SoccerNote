@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   get 'teams/new'
   get 'teams/show'
   get 'teams/edit'
-  get 'members/index'
-  get 'members/new'
-  get 'members/show'
-  get 'members/edit'
-  get 'notes/index'
+  resources :members
+
   resources :notes
+
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 end

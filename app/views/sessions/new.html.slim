@@ -1,0 +1,10 @@
+.text-center
+  h1.mb-5　ログイン
+
+  .w-25.mx-auto
+    =form_with scope: :session,local: true do |f|
+      .form-group
+        = f.text_field :email,class: 'form-control',placeholder: 'Email'
+      .form-group
+        = f.password_field :password,class: 'form-control',placeholder: 'Password'
+      =f.submit 'ログインする',class: 'btn btn-primary'

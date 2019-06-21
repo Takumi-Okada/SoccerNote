@@ -17,6 +17,22 @@ body{
     min-height:150px;
 }
 
+.show-left-area{
+    width:300px;
+}
+
+.show-right-area{
+    width:780px;
+}
+
+.image{
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    border:solid;
+    border-color: #5bc0de;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
