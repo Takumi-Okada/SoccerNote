@@ -1,4 +1,17 @@
-h1
-  | Members#index
-p
-  | Find me in app/views/members/index.html.erb
+h1.mb-5
+  | メンバー一覧
+
+.mb-3.area
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th 
+        th 選手名
+        th ポジション
+    tbody
+      - @members.each do |member|
+          tr
+            th
+            th =link_to member.name, member
+            th =member.position
+

@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       note: ノート
+      member: メンバー
     attributes:
       note:
         title: タイトル
@@ -12,4 +13,12 @@ ja:
         goal: 次の目標
         commenter: コメント者
         comment: コメント
+      member:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        birthday: 生年月日
+        position: ポジション
+        avatar: 画像
         

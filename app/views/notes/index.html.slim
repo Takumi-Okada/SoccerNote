@@ -1,7 +1,7 @@
 h1.mb-5
   | サッカーノート一覧
 
-.mb-3
+.mb-3.area
   table.table.table-hover
     thead.thead-default
       tr
@@ -12,7 +12,7 @@ h1.mb-5
     tbody
       - @notes.each do |note|
           tr
-            th
+            th= link_to note.member.name,note.member
             th= link_to note.title,note
             th= note.play_date
             - if note.comment.present?
