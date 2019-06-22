@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
  root 'notes#index'
-
-  get 'teams/new'
-  get 'teams/show'
-  get 'teams/edit'
+ 
+  resources :teams
   resources :members
-
   resources :notes
 
   get 'login' => 'sessions#new'
