@@ -21,4 +21,14 @@ ja:
         birthday: 生年月日
         position: ポジション
         avatar: 画像
+      team:
+        name: チーム名
+      team/members:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        birthday: 生年月日
+        position: ポジション
+        avatar: 画像
         

@@ -1,4 +1,19 @@
-h1
-  | Teams#new
-p
-  | Find me in app/views/teams/new.html.erb
+=form_for @team do |f|
+  .form-group
+  =f.label :name
+  =f.text_field :name,class: 'form-control mb-5'
+
+  = f.fields_for :members,@team.members.build do |m| 
+    = m.label :name
+    = m.text_field :name,class: 'form-control'
+    = m.label :birthday
+    = m.date_field :birthday,class: 'form-control'
+    = m.label :email
+    = m.text_field :email,class: 'form-control'
+    = m.label :password
+    = m.password_field :password,class: 'form-control'
+    = m.label :password_confirmation
+    = m.password_field :password_confirmation,class: 'form-control'
+
+
+  =f.submit class:'btn btn-primary mt-5'

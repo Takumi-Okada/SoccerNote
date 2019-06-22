@@ -7,4 +7,6 @@
         = f.text_field :email,class: 'form-control',placeholder: 'Email'
       .form-group
         = f.password_field :password,class: 'form-control',placeholder: 'Password'
+    
+      =link_to 'チーム登録をする',new_team_path
       =f.submit 'ログインする',class: 'btn btn-primary'
