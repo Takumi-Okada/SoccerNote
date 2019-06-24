@@ -1,10 +1,13 @@
 class MembersController < ApplicationController
+  skip_before_action :logedin
+
   def index
     @members=Member.all
   end
 
   def new
-    @member=Member.new
+    @team=Team.find(params[:team_id])
+    @member=@team.members.new
   end
 
   def show
@@ -17,8 +20,10 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member=Member.new(member_params)
+    @team=Team.find(params[:team_id])
+    @member=@team.members.new(member_params)
     if @member.save
+      session[:member_id]=@member.id
       redirect_to members_path,notice: '登録完了しました'
     else
       render :new

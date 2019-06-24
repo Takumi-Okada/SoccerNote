@@ -1,4 +1,7 @@
 class NotesController < ApplicationController
+  skip_before_action :logedin
+
+
   def index
     @notes=Note.all
   end
@@ -36,6 +39,6 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title,:play_date,:contents,:good,:bad,:goal)
+    params.require(:note).permit(:title,:play_date,:contents,:good,:bad,:goal,:comment)
   end
 end
