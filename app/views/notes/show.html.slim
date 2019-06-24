@@ -17,7 +17,7 @@
 
   .clearfix.border-bottom.border-info
           h3.float-left 指導者からのコメント
-          =link_to "コメントを記載する",edit_note_path,class: 'float-right btn btn-outline-info'
+          =link_to "コメントを記載する",edit_note_path,class: 'float-right btn btn-outline-info' if current_user.leader?
   - if @note.comment.present?
     =simple_format(@note.comment)
   - else
@@ -25,5 +25,5 @@
 
 
   .text-center.mt-5
-    =link_to 'ノート編集',edit_note_path,class: 'btn btn-success'
+    =link_to 'ノート編集',edit_note_path,class: 'btn btn-success' unless current_user.leader?
     

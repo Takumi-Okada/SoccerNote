@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   skip_before_action :login_required,only: [:new,:create]
+  skip_before_action :logedin
 
   def new
     @team=Team.new
@@ -24,6 +25,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, members_attributes: [:name,:birthday,:email,:password,:password_confirmation])
+    params.require(:team).permit(:name, members_attributes: [:name,:birthday,:email,:password,:password_confirmation,:leader])
   end
 end
