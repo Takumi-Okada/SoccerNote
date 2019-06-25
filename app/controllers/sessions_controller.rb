@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :login_required
-
+  skip_before_action :leader_required
+  skip_before_action :logedin,only: [:destroy]
   def new
   end
 

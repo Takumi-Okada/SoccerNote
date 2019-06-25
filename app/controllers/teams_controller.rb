@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   skip_before_action :login_required,only: [:new,:create]
-  skip_before_action :logedin
+  skip_before_action :logedin,only: [:show,:edit,:update]
+  skip_before_action :leader_required,only: [:new,:show,:update,:create]
 
   def new
     @team=Team.new
@@ -20,6 +21,10 @@ class TeamsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+
   end
 
   private

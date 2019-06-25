@@ -1,8 +1,10 @@
 class MembersController < ApplicationController
-  skip_before_action :logedin
+  skip_before_action :logedin,only: [:index,:show,:edit,:update]
+  skip_before_action :login_required,only: [:new,:create]
+  skip_before_action :leader_required,only: [:show,:edit,:new,:create,:update]
 
   def index
-    @members=Member.all
+    @members=current_user.team.members
   end
 
   def new

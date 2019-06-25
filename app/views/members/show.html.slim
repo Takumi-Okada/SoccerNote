@@ -1,8 +1,8 @@
 .float-left.mb-5.text-center.mr-3.area.show-left-area
     -if @member.avatar.attached?
-        =image_tag @member.avatar,class: 'image mb-5'
+        =image_tag @member.avatar,class: 'image mb-5 show-image'
     -else
-        =image_tag "noimage.jpg",class: 'image mb-5'
+        =image_tag "noimage.jpg",class: 'image mb-5 show-image'
     
     .ul
         .li.mb-3 氏名：#{@member.name}

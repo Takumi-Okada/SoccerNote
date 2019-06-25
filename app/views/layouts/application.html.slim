@@ -20,7 +20,12 @@ html
             li.nav-item = link_to 'ノート作成',new_note_path,class: 'nav-link text-white'
           li.nav-item = link_to 'ログアウト',logout_path,method: :delete,class: 'nav-link text-white'
         .form-inline.ml-auto
+            h7.text-white ="#{current_user.team.name}："
             =link_to current_user.name,current_user,class: 'text-white'
+            -if current_user.avatar.attached?
+                =image_tag current_user.avatar,class: 'image ml-3 header-image'
+            -else
+                =image_tag "noimage.jpg",class: 'image ml-3 header-image'
                 
 
       
