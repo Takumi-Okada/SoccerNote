@@ -1,9 +1,11 @@
 class NotesController < ApplicationController
   skip_before_action :logedin
+  skip_before_action :leader_required,only: [:new,:show,:edit,:create,:update]
 
 
   def index
-    @notes=Note.all
+    member_id=current_user.team.members.select(:id)
+    @notes=Note.where(member_id: member_id)
   end
 
   def new

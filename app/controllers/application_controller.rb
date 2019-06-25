@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
     before_action :login_required
     before_action :logedin
+    before_action :leader_required
 
     private
 
@@ -18,5 +19,10 @@ class ApplicationController < ActionController::Base
     #ログイン済みの場合はroot_pathへリダイレクト
     def logedin
         redirect_to root_path if current_user.present?
+    end
+
+    #指導者フラグがFALSEの場合、詳細ページへ繊維
+    def leader_required
+        redirect_to current_user unless current_user.leader?
     end
 end
