@@ -5,7 +5,8 @@ class NotesController < ApplicationController
 
   def index
     member_id=current_user.team.members.select(:id)
-    @notes=Note.where(member_id: member_id)
+    @q=Note.where(member_id: member_id).ransack(params[:q])
+    @notes= @q.result(distinct: true).page(params[:page])
   end
 
   def new
