@@ -4,7 +4,7 @@ class MembersController < ApplicationController
   skip_before_action :leader_required,only: [:show,:edit,:new,:create,:update]
 
   def index
-    @members=current_user.team.members
+    @members=current_user.team.members.page(params[:page])
   end
 
   def new

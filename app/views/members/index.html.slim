@@ -1,7 +1,9 @@
 h1.mb-5
-  | メンバー一覧
+  | メンバー
 
-.mb-3.area
+= page_entries_info @members
+
+.mb-3.mt-3.area
   table.table.table-hover
     thead.thead-default
       tr
@@ -17,4 +19,6 @@ h1.mb-5
               th =image_tag  "noimage.jpg",class: 'image index-image'
             th =link_to member.name, member
             th =member.position
+
+= paginate @members
 
