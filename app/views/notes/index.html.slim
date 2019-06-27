@@ -1,17 +1,21 @@
-= search_form_for @q,class: 'mb-5 w-50' do |f|
-  .form-group
-    = f.search_field :member_name_cont,class: 'form-control mb-2',placeholder: '選手名'
-    = f.search_field :title_cont,class: 'form-control mb-2',placeholder: 'タイトル'
-    = f.date_field :play_date_lteq,class: 'form-control',placeholder: '実施日'
-  .form-group
-    = f.submit class: 'btn btn-outline-primary'
+
 
 .mb-3
   
   = page_entries_info @notes
 
 .mb-3.area
-  h1.font-weight-bold.text-center.mb-5.border-bottom.border-info チームノート
+  h1.font-weight-bold.text-center.mb-3.border-bottom.border-info チームノート
+  = search_form_for @q  do |f|
+    .row.p-0
+      .form-group.col-sm-4
+        = f.search_field :member_name_cont,class: 'form-control mb-2',placeholder: '選手名'
+      .form-group.col-sm-4
+        = f.search_field :title_cont,class: 'form-control mb-2',placeholder: 'タイトル'
+      .form-group.col-sm-4
+        = f.date_field :play_date_lteq,class: 'form-control',placeholder: '実施日'
+      .form-group
+        = f.submit style:'display:none;'
   table.table.table-hover
     thead.thead-default
       tr
