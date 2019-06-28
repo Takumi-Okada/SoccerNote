@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import "font-awesome";
 
 body{
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
@@ -45,6 +46,9 @@ body{
     height:50px;
     width:50px;
 }
+input{
+    font-family: FontAwesome;
+    }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
