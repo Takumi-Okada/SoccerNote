@@ -33,6 +33,7 @@ class NotesController < ApplicationController
   def update
     @note=Note.find(params[:id])
     if @note.update(note_params)
+      CommentMailer.creation_email(@note.member).deliver_now if params[:comment].present?
       redirect_to root_path,notice: 'ノートを更新しました'
     else
       render :new

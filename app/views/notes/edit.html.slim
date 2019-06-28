@@ -25,7 +25,7 @@
 
       .clearfix.border-bottom.border-info
               h3.float-left 指導者からのコメント
-              =f.submit class: 'btn btn-primary float-right' 
+              =f.submit name: 'comment',class: 'btn btn-primary float-right' 
       .form-group.mt-3
         =f.text_area :comment,class: 'form-control textarea'
 - else
