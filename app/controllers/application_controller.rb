@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :login_required
     before_action :logedin
     before_action :leader_required
+    include MembersHelper
 
     private
 

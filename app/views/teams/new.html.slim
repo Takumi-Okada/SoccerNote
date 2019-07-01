@@ -1,8 +1,10 @@
+h1 チーム新規登録
 =form_for @team do |f|
-  .form-group
+  .form-group.border-bottom.border-info
   =f.label :name
   =f.text_field :name,class: 'form-control mb-5'
 
+  h3.mb-3 ◉指導者情報
   = f.fields_for :members,@team.members.build do |m| 
     = m.label :name
     = m.text_field :name,class: 'form-control'

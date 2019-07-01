@@ -2,8 +2,9 @@
   .mb-5
     h5.font-weight-bold チーム名：#{@team.name}
     h5.font-weight-bold チームメンバー登録URL：localhost:3000/members/#{@team.url}/new
-    p.text-success チームメンバー登録URLを共有してメンバー登録を行ってください
+    p.text-success ※チームメンバー登録URLを共有してメンバー登録を行ってください
 
+  h5.font-weight-bold チームメンバー
   table.table.table-hover
     thead.thead-default
       tr
@@ -18,7 +19,10 @@
             - else
               th =image_tag  "noimage.jpg",class: 'image index-image'
             th =link_to member.name, member
-            th =member.position
+            - if member.leader?
+              th.text-danger 指導者
+            - else
+              th =member.position
 
 = paginate @members
 

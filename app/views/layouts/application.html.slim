@@ -15,7 +15,8 @@ html
       -if current_user.present?
         ul.navbar-nav 
           - if current_user.leader?
-            li.nav-item = link_to 'メンバー一覧',members_path,class: 'nav-link text-white'
+            li.nav-item = link_to 'チームノート',root_path,class: 'nav-link text-white'
+            li.nav-item = link_to 'チームメンバー',members_path,class: 'nav-link text-white'
           - else
             li.nav-item = link_to 'ノート作成',new_note_path,class: 'nav-link text-white'
           li.nav-item = link_to 'ログアウト',logout_path,method: :delete,class: 'nav-link text-white'
