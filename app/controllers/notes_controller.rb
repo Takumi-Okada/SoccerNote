@@ -1,11 +1,11 @@
 class NotesController < ApplicationController
   skip_before_action :logedin
   skip_before_action :leader_required,only: [:new,:show,:edit,:create,:update]
-
+  before_action :note_member_require,only: [:show,:edit,:update]
 
   def index
     member_id=current_user.team.members.select(:id)
-    @q=Note.where(member_id: member_id).ransack(params[:q])
+    @q=Note.where(member_id: member_id).order(play_date: :desc).ransack(params[:q])
     @notes= @q.result(distinct: true).page(params[:page])
   end
 
@@ -14,11 +14,9 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note=Note.find(params[:id])
   end
 
   def edit
-    @note=Note.find(params[:id])
   end
 
   def create
@@ -31,7 +29,6 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note=Note.find(params[:id])
     if @note.update(note_params)
       CommentMailer.creation_email(@note.member).deliver_now if params[:comment].present?
       redirect_to root_path,notice: 'ノートを更新しました'
@@ -44,5 +41,13 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title,:play_date,:contents,:good,:bad,:goal,:comment)
+  end
+ 
+  #自分のノートではないかつ指導者でもない場合はroot_pathへリダイレクト
+  #他のチームのノートの場合はroot_pathへリダイレクト
+  def note_member_require
+    @note=Note.find(params[:id])
+    redirect_to root_path unless @note.member.id==current_user.id||current_user.leader?
+    redirect_to root_path unless current_user.team.id==@note.member.team.id
   end
 end

@@ -6,29 +6,34 @@
     
     .ul
         .li.mb-3 氏名：#{@member.name}
-        .li.mb-3 ポジション：#{@member.position}
+        - unless @member.leader?
+          .li.mb-3 ポジション：#{@member.position}  
         .li.mb-3 誕生日：#{@member.birthday}
+        .li.mb-3 年齢：#{@age}歳
         .li.mb-3 メールアドレス：#{@member.email}
 
-    =link_to "基本情報更新",edit_member_path,class: 'btn btn-success mt-5'
+    =link_to "基本情報更新",edit_member_path,class: 'btn btn-success mt-5' if current_user.id==@member.id
 
 .float-left.area.show-right-area
-  h1.font-weight-bold.text-center.mb-5.border-bottom.border-info Myノート
-  table.table.table-hover
-    thead.thead-default
-      tr
-        th タイトル
-        th 実施日
-        th
-    tbody
-      - @notes.each do |note|
+    h1.font-weight-bold.text-center.mb-5.border-bottom.border-info ノート
+    - if @member.leader?
+      p.text-center.text-muted 指導者はノートがありません
+    - else
+      table.table.table-hover
+        thead.thead-default
           tr
-            th= link_to note.title,note
-            th= note.play_date
-            - if note.comment.present?
-              th.text-success コメント済
-            - else
-              th.text-danger コメント無し
+            th タイトル
+            th 実施日
+            th
+        tbody
+          - @notes.each do |note|
+              tr
+                th= link_to note.title,note
+                th= note.play_date
+                - if note.comment.present?
+                  th.text-success コメント済
+                - else
+                  th.text-danger コメント無し
 
 
         

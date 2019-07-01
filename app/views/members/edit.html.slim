@@ -24,9 +24,10 @@
     .form-group
       =f.label :birthday
       =f.date_field :birthday,class:'form-control'
-    .form-group
-      =f.label :position
-      =f.text_field :position,class:'form-control'
+    - unless @member.leader?
+      .form-group
+        =f.label :position
+        =f.text_field :position,class:'form-control'
   
     .text-center
       =f.submit class:'btn btn-primary mt-5'
