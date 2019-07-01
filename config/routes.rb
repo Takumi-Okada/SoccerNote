@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :teams
 
   resources :members
-  get 'members/:team_id/new' => 'members#new'
+  get 'members/:team_url/new' => 'members#new'
   post 'members/:team_id/create' => 'members#create'
 
 
