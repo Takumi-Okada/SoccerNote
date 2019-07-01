@@ -1,9 +1,9 @@
-h1.mb-5
-  | メンバー
-
-= page_entries_info @members
-
 .mb-3.mt-3.area
+  .mb-5
+    h5.font-weight-bold チーム名：#{@team.name}
+    h5.font-weight-bold チームメンバー登録URL：localhost:3000/members/#{@team.url}/new
+    p.text-success チームメンバー登録URLを共有してメンバー登録を行ってください
+
   table.table.table-hover
     thead.thead-default
       tr

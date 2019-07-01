@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  require 'securerandom'
   skip_before_action :login_required,only: [:new,:create]
   skip_before_action :logedin,only: [:show,:edit,:update]
   skip_before_action :leader_required,only: [:new,:show,:update,:create]
@@ -15,6 +16,7 @@ class TeamsController < ApplicationController
 
   def create
     @team=Team.new(team_params)
+    @team.url=SecureRandom.base64()
     if @team.save
       session[:member_id]=@team.members.first.id
       redirect_to root_path,notice: 'チームを登録しました'
