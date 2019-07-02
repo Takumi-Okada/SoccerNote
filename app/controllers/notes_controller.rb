@@ -1,12 +1,12 @@
 class NotesController < ApplicationController
   skip_before_action :logedin
-  skip_before_action :leader_required,only: [:new,:show,:edit,:create,:update]
-  before_action :note_member_require,only: [:show,:edit,:update]
+  skip_before_action :leader_required,only: [:new,:show,:edit,:create,:update,:destroy]
+  before_action :note_member_require,only: [:show,:edit,:update,:destroy]
 
   def index
     member_id=current_user.team.members.select(:id)
     @q=Note.where(member_id: member_id).order(play_date: :desc).ransack(params[:q])
-    @notes= @q.result(distinct: true).page(params[:page])
+    @notes= @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def new
@@ -35,6 +35,11 @@ class NotesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @note.destroy
+    redirect_to root_path,notice: 'ノートを削除しました'
   end
 
   private

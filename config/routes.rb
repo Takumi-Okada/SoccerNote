@@ -3,7 +3,7 @@ Rails.application.routes.draw do
  
   resources :teams
 
-  resources :members
+  resources :members 
   get 'members/:team_url/new' => 'members#new'
   post 'members/:team_id/create' => 'members#create'
 

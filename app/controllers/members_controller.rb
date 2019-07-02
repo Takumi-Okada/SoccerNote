@@ -7,7 +7,7 @@ class MembersController < ApplicationController
 
   def index
     @team=current_user.team
-    @members=@team.members.page(params[:page])
+    @members=@team.members.page(params[:page]).per(10)
   end
 
   def new
@@ -16,7 +16,7 @@ class MembersController < ApplicationController
   end
 
   def show
-    @notes=@member.notes
+    @notes=@member.notes.order(play_date: :desc).page(params[:page]).per(10)
     @age=age(@member.birthday)
   end
 
