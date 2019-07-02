@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
 
   def create
     @team=Team.new(team_params)
-    @team.url=SecureRandom.base64()
+    @team.url=SecureRandom.alphanumeric(30)
     if @team.save
       session[:member_id]=@team.members.first.id
       redirect_to root_path,notice: 'チームを登録しました'
